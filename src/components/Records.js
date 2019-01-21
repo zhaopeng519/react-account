@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import Record from "./Record";
 // import $ from "jquery";
-import axios from "axios";
+// import axios from "axios";
+import * as RecordsAPI from "../utils/RecordsAPI";
 
 export default class Records extends Component {
   constructor() {
@@ -27,20 +28,42 @@ export default class Records extends Component {
     // );
     //--------------------------------------------------------------------
 
-    axios
-      .get(" http://localhost:4000/records")
-      .then(response =>
-        this.setState({
-          records: response.data,
-          isLoaded: true
-        })
+    // axios
+    //   .get("http://localhost:4000/records")
+    //   .then(response =>
+    //     this.setState({
+    //       records: response.data,
+    //       isLoaded: true
+    //     })
+    //   )
+    //   .catch(error =>
+    //     this.setState({
+    //       isLoaded: true,
+    //       error
+    //     })
+    //   );
+
+    // axios
+    //   .get(`${RecordsAPI.api}/api/v1/records`)
+    //   .then(response =>
+    //     this.setState({
+    //       records: response.data,
+    //       isLoaded: true
+    //     })
+    //   )
+    //   .catch(error => this.setState({ isLoaded: true, error }));
+    
+    RecordsAPI.getAll().then(
+          response => this.setState({
+              records: response.data,
+              isLoaded: true
+          })
+      ).catch(
+          error => this.setState({
+              isLoaded: true,
+              error
+          })
       )
-      .catch(error =>
-        this.setState({
-          isLoaded: true,
-          error
-        })
-      );
   }
 
   render() {

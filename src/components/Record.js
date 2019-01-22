@@ -26,6 +26,7 @@ export default class Record extends Component {
     RecordsAPI.update(this.props.record.id, record)
       .then(response => {
         this.props.handleEditRecord(this.props.record, response.data);
+        this.setState({ edit: false });
       })
       .catch(error => console.log(error.message));
   }

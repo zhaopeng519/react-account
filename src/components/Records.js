@@ -69,24 +69,52 @@ export default class Records extends Component {
       );
   }
 
-    addRecord(record) {
-        this.setState({
-            error: null,
-            isLoaded: true,
-            records: [
-                ...this.state.records,
-                record
-            ]
-        })
-    }
+  addRecord(record) {
+    this.setState({
+      error: null,
+      isLoaded: true,
+      records: [...this.state.records, record]
+    });
+    console.log(this.state.records);
+  }
+
+  updateRecord(record, data) {
+    const recordIndex = this.state.records.indexOf(record);
+    const newRecords = this.state.records.map((item, index) => {
+      if (index !== recordIndex) {
+        // This isn't the item we care about - keep it as-is
+        return item;
+      }
+
+      // Otherwise, this is the one we want - return an updated value
+      return {
+        ...item,
+        ...data
+      };
+    });
+    this.setState({
+      records: newRecords
+    });
+  }
+  
+  deleteRecord(record) {
+    const recordIndex = this.state.records.indexOf(record);
+    const newRecords = this.state.records.filter(
+      (item, index) => index !== recordIndex
+    );
+    this.setState({
+      records: newRecords
+    });
+  }
+
   render() {
     const { error, isLoaded, records } = this.state;
     let recordsComponent;
 
     if (error) {
-      recordsComponent = <div>Error:{error.responseText}</div>;
+      recordsComponent = <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
-      recordsComponent = <div>Loading</div>;
+      recordsComponent = <div>Loading...</div>;
     } else {
       recordsComponent = (
         <table className="table table-bordered">
@@ -95,21 +123,29 @@ export default class Records extends Component {
               <th>Date</th>
               <th>Title</th>
               <th>Amount</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            {/* {this.state.records.map((record) => <Record record={record} key={record.id}/>)} */}
             {records.map(record => (
-              <Record {...record} key={record.id} />
+              <Record
+                key={record.id}
+                record={record}
+                handleEditRecord={this.updateRecord.bind(this)}
+                handleDeleteRecord={this.deleteRecord.bind(this)}
+              />
             ))}
           </tbody>
         </table>
       );
     }
-    return <div>
+
+    return (
+      <div>
         <h2>Records</h2>
         <RecordForm handleNewRecord={this.addRecord.bind(this)} />
         {recordsComponent}
-      </div>;
+      </div>
+    );
   }
 }

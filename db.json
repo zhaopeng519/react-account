@@ -1,44 +1,44 @@
 [
-    {
-        "id": "1",
-        "date": "date 1",
-        "title": "title 1",
-        "amount": 59
-    },
-    {
-        "id": "2",
-        "date": "date 2",
-        "title": "title 2",
-        "amount": 63
-    },
-    {
-        "id": "3",
-        "date": "date 3",
-        "title": "title 3",
-        "amount": 96
-    },
-    {
-        "id": "4",
-        "date": "date 4",
-        "title": "title 4",
-        "amount": 1
-    },
-    {
-        "id": "5",
-        "date": "date 5",
-        "title": "title 5",
-        "amount": 93
-    },
-    {
-        "id": "6",
-        "date": "date 6",
-        "title": "title 6",
-        "amount": 93
-    },
-    {
-        "id": "7",
-        "date": "date 7",
-        "title": "title 7",
-        "amount": 96
-    }
+  {
+    "id": "1",
+    "date": "date 1",
+    "title": "title 1",
+    "amount": 59
+  },
+  {
+    "id": "2",
+    "date": "date 2",
+    "title": "title 2",
+    "amount": 63
+  },
+  {
+    "id": "3",
+    "date": "date 3",
+    "title": "title 3",
+    "amount": 96
+  },
+  {
+    "id": "4",
+    "date": "date 4",
+    "title": "title 4",
+    "amount": 1
+  },
+  {
+    "id": "5",
+    "date": "date 5",
+    "title": "title 5",
+    "amount": 93
+  },
+  {
+    "id": "6",
+    "date": "date 6",
+    "title": "title 6",
+    "amount": 93
+  },
+  {
+    "id": "7",
+    "date": "date 7",
+    "title": "title 7",
+    "amount": 96
+  }
 ]
